@@ -1,69 +1,17 @@
 |||\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\|||
 |||----------------------------------------------------------------------------------------------------------------------------------------------------|||
-|||--------------------------------------------------------------- ANGULAR PASO A PASO ----------------------------------------------------------------|||
+|||--------------------------------------------------------------- FLUTTER PASO A PASO ----------------------------------------------------------------|||
 |||----------------------------------------------------------------------------------------------------------------------------------------------------|||
 |||\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\|||
 |||                                                                                                                                                    |||
-||| --  PUESTA EN MARCHA                                                                                                                               |||
 ||| --  CONFIGURACIÓN AMBIENTE                                                                                                                         |||
-||| --                                                                                                                                                 |||
-||| --  01.  PROYECTO                                                                                                                                  |||
-||| --  02.  COMPONENTS                                                                                                                                |||
-||| --  03.  INTERFACES                                                                                                                                |||
-||| --  04.  SERVICES                                                                                                                                  |||
-||| --  05.  ROUTING                                                                                                                                   |||
-||| --  06.  REACTIVE FORMS                                                                                                                            |||
-||| --  07.  HTTP FETCH Y JSON SERVER                                                                                                                  |||
-||| --  08.  DESPLIEGUE                                                                                                                                |||
 |||                                                                                                                                                    |||
 ||| --  AUTOR:  ALBEIRO RAMOS. SENA, 2025.                                                                                                             |||
 |||                                                                                                                                                    |||
-||| --  Bibliografía  https://angular.dev/tutorials                                                                                                    |||
-|||                   https://www.youtube.com/playlist?list=PLrAw40DbN0l2XNbdFx0GvoRdzsyqTsdmP                                                         |||
+||| --  Bibliografía  XXXXXXXXXXXXXXXXXXXXXXXXXXXXX                                                                                                    |||
+|||                   XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX                                                         |||
 |||                                                                                                                                                    |||
 |||\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\|||
-
-
-|||\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\|||
-|||----------------------------------------------------------------------------------------------------------------------------------------------------|||
-|||----------------------------------------------------------------- PUESTA EN MARCHA -----------------------------------------------------------------|||
-|||----------------------------------------------------------------------------------------------------------------------------------------------------|||
-|||\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\|||
-
-|--------------------------------------------------------------------------------------------------------------------------------------------------------|
-|-- ------  Recomendaciones para poner en marcha el proyecto: -------------------------------------------------------------------------------------------|
-|--------------------------------------------------------------------------------------------------------------------------------------------------------|
-
-            01. Garantizar el ambiente de desarrollo (Ver apartado 'CONFIGURACIÓN AMBIENTE').
-            
-            02. Clonar el proyecto desde github en cualquier parte del computador (Ejp, Escritorio).
-            
-            03. Abrir el proyecto en Visual Studio Code.
-            
-            04. Abrir una terminal y ubicarse en el proyecto:
-
-                    PS C:\..\..> cd frontend
-
-            05. Cambiar el nombre de la terminal a 'frontend', seleccionándola en la parte inferior derecha y presionando F2 / Rename...
-
-            06. Instalar dependencias de Angular desde la terminal:
-
-                    PS C:\..\frontend> npm install
-
-            07. Ejecutar el servidor de 'angular':
-
-                    PS C:\..\frontend> ng serve -o
-
-            08. Abrir una terminal y ubicarse en el servidor json:
-
-                    PS C:\..\..> cd backend
-            
-            09. Cambiar el nombre de la terminal a 'backend', seleccionándola en la parte inferior derecha y presionando F2 / Rename...
-
-            10. Ejecutar el servidor 'jsonserver':
-
-                    PS C:\..\backend> npx json-server db.json
-
 
 |||\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\|||
 |||----------------------------------------------------------------------------------------------------------------------------------------------------|||
@@ -83,16 +31,8 @@
 
             03. Abrir Visual Studio Code.
             
-            04. Instalar las siguientes extensiones en Visual Studio Code:
+            04. Instalar las siguientes extensiones en Visual Studio Code:                    
                     
-                    ⦿   Auto Close Tag
-                    ⦿   Auto Complete Tag
-                    ⦿   Auto Rename Tag
-                    ⦿   Code Runner
-                    ⦿   HTML CSS Support
-                    ⦿   IntelliSense for CSS class names in HTML
-                    ⦿   JavaScript (ES6) code snippets
-                    ⦿   Live Server
                     ⦿   Material Icon Theme
                     ⦿   Path IntelliSense
                     ⦿   Prettier - Code formatter
