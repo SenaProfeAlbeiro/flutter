@@ -4,7 +4,9 @@
 |||----------------------------------------------------------------------------------------------------------------------------------------------------|||
 |||\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\|||
 |||                                                                                                                                                    |||
-||| --  CONFIGURACIÓN ENTORNO                                                                                                                          |||
+||| --  01. CONFIGURACIÓN ENTORNO                                                                                                                      |||
+||| --  02. CREAR UN PROYECTO                                                                                                                          |||
+||| --  03. RunApp(), StatelessWidget, MaterialApp(title, home), Text().                                                                               |||
 |||                                                                                                                                                    |||
 ||| --  AUTOR:  ALBEIRO RAMOS. SENA, 2025.                                                                                                             |||
 |||                                                                                                                                                    |||
@@ -20,20 +22,23 @@
 |||\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\|||
 
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
-|-- ------  Instalar Flutter: ---------------------------------------------------------------------------------------------------------------------------|
+|-- 01.01.  Instalar Flutter: ---------------------------------------------------------------------------------------------------------------------------|
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
 
             01. Descargar 'Flutter': https://docs.flutter.dev/get-started/install/windows/desktop?tab=download.
 
                     ⦿   Seleccionar 'Download and install / flutter_windows_3.32.4-stable.zip' (O la version más reciente y estable).
-                    ⦿   Descargar la carpeta comprimida.
+                    ⦿   Descargar la carpeta comprimida en cualquier parte de la PC.
 
             02. Descomprimir la carpeta en 'C:\'.
             
-            03. Copiar la ruta del explorador, es decir, 'C:\flutter\'.
+            03. Ingresar a 'C:\flutter\bin'.
+            
+            04. Copiar la ruta del explorador, es decir, 'C:\flutter\bin'.
+
             
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
-|-- ------  Configurar las variables de entorno del usuario y del sistema: ------------------------------------------------------------------------------|
+|-- 01.02.  Configurar las variables de entorno del usuario y del sistema: ------------------------------------------------------------------------------|
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
 
             01. Presionar la tecla 'Windows' y escribir 'Editar las variables de entorno del sistema' / 'Enter'.
@@ -44,11 +49,37 @@
 
                     ⦿   Dar click en 'Path' / 'Editar'
                     ⦿   Dar click en 'Nuevo'
-                    ⦿   Pegar la ruta 'C:\flutter\'
+                    ⦿   Pegar la ruta 'C:\flutter\bin'
                     ⦿   Dar click en 'Aceptar' / 'Aceptar'.
 
+
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
-|-- ------  Instalar Visual Studio Code: ----------------------------------------------------------------------------------------------------------------|
+|-- 01.03.  Verificar la instalación de Flutter con el PowerShell: --------------------------------------------------------------------------------------|
+|--------------------------------------------------------------------------------------------------------------------------------------------------------|
+
+            01. Abrir el PowerShell de Windows como administrador.
+
+            02. Ejecutar el siguiente comando para instalar 'flutter':
+
+                    PS C:\..\..> flutter
+
+            03. Ejecutar el siguiente comando, para obtener más información de flutter:
+
+                    PS C:\..\..> flutter help
+
+            04. Ejecutar el siguiente comando, para mostrar información sobre las herramientas instaladas e identificar si hay alguna dependencia de 
+                plataforma que se necesite para completar la configuración:
+
+                    PS C:\..\..> flutter doctor
+            
+            05. Posibles errores que se pueden presentar:
+
+                    ⦿	No tiene el componente 'cmdline-tools component'. Escribir el siguiente comando
+
+                        PS C:\..\..> flutter doctor --android-licenses
+
+|--------------------------------------------------------------------------------------------------------------------------------------------------------|
+|-- 01.04.  Instalar Visual Studio Code: ----------------------------------------------------------------------------------------------------------------|
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
 
             01. Descargar 'Visual Studio Code': https://code.visualstudio.com/download.
@@ -61,56 +92,116 @@
             
             04. Instalar las siguientes extensiones en Visual Studio Code:                    
                     
+                    ⦿   Dart
+                    ⦿   Flutter
+                    ⦿   Flutter Color
+                    ⦿   Flutter Widget Snippets
+                    ⦿   Awesome Flutter Snippets
                     ⦿   Material Icon Theme
-                    ⦿   Path IntelliSense
-                    ⦿   Prettier - Code formatter
 
-                    ⦿   Angular Essentials (Version 18)
-                    ⦿   Angular Language Service
-                    ⦿   Angular Snippets (Version 18)
-                    ⦿   TypeScript Importer
+            05. Ir a 'File / Preferences / Settings' o 'CTRL + ,' y seleccionar la opción 'Format On Save'.
 
 
-|--------------------------------------------------------------------------------------------------------------------------------------------------------|
-|-- ------  Instalar Node Js: ---------------------------------------------------------------------------------------------------------------------------|
-|--------------------------------------------------------------------------------------------------------------------------------------------------------|
-
-            01. Descargar 'node.js': https://nodejs.org/es/.
-
-            02. Instalar node.js.
-
+|||\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\|||
+|||----------------------------------------------------------------------------------------------------------------------------------------------------|||
+|||-------------------------------------------------------------- 02.  CREAR UN PROYECTO --------------------------------------------------------------|||
+|||----------------------------------------------------------------------------------------------------------------------------------------------------|||
+|||\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\|||
 
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
-|-- ------  PowerShell. Directivas: ---------------------------------------------------------------------------------------------------------------------|
+|-- 02.01.  Crear un proyecto: --------------------------------------------------------------------------------------------------------------------------|
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
 
-            01. Abrir el PowerShell de Windows
+            01. Crear una carpeta de flutter para los proyectos, por ejemplo en 'C:\..\..\Desktop\flutter'.
+
+            02. Ir a 'view / command palette (Ctrl + shift + p) / Flutter: New Project / Application'.
             
-            01. Ejecutar el siguiente comando
+            03. Nombrar el proyecto, ejemplo 'app01' / Enter.
+            
+|--------------------------------------------------------------------------------------------------------------------------------------------------------|
+|-- 02.02.  Ejecutar el proyecto en el Navegador: -------------------------------------------------------------------------------------------------------|
+|--------------------------------------------------------------------------------------------------------------------------------------------------------|
+            
+            01. Abrir una 'Terminal' en Visual Studio Code: 'Terminal / New Terminal' ó 'Ctrl + Shift + ñ'.
+            
+            02. Ejecutar el siguiente comando:
 
-                    PS C:\..\..> Get-ExecutionPolicy
-                    Restricted
+                    PS C:\..\..\flutter\app01> flutter run
+            
+                    Connected devices:
+                    Windows (desktop) • windows • windows-x64    • Microsoft Windows [Versi¢n 10.0.19045.5965]
+                    Chrome (web)      • chrome  • web-javascript • Google Chrome 137.0.7151.120
+                    Edge (web)        • edge    • web-javascript • Microsoft Edge 137.0.3296.93
+                    [1]: Windows (windows)
+                    [2]: Chrome (chrome)
+                    [3]: Edge (edge)
+                    Please choose one (or "q" to quit): 2
+            
+            NOTA:   ⦿   Tambien se puede acceder de las siguientes formas:
 
-            NOTA:   ⦿   Si aparece 'Restricted', hay que cambiarla a 'Unrestricted' de la siguiente forma:
+                         A.	'Run / Star debbuging'.
+                         B.	En la parte superior derecha, con el Icono de punta de flecha hacia la derecha: 'Run'.
 
-                    PS C:\..\..> Set-ExecutionPolicy -Scope CurrentUser
+                    ⦿   Para cerrar el servidor, se da clic en la terminal y se combinan las teclas 'CTRL + C' y 'S'.
 
-                    cmdlet Set-ExecutionPolicy en la posición 1 de la canalización de comandos
-                    Proporcione valores para los parámetros siguientes:
-                    ExecutionPolicy: Unrestricted
-
-            02. Verificar la versión de 'node' y 'npm':
-
-                    PS C:\..\..> node --version
-                    PS C:\..\..> npm --version
+            03. Al abrir el navegador, se presiona la tecla 'F12' y la combinación de teclas 'CTRL + SHIFT + M' para visualizar como celular.            
+            
+            NOTA:   ⦿   En 'Dimensions: Responsive', se puede seleccionar el dispositivo de preferencia, por ejemplo 'Samsung Galaxy S8+'.
 
 
 |||\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\|||
 |||----------------------------------------------------------------------------------------------------------------------------------------------------|||
-|||------------------------------------------------------------------ 01.  PROYECTO -------------------------------------------------------------------|||
+|||----------------------------------------- 03.  RunApp(), StatelessWidget, MaterialApp(title, home), Text() -----------------------------------------|||
 |||----------------------------------------------------------------------------------------------------------------------------------------------------|||
 |||\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\|||
 
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
-|-- 01.01.  Creación del proyecto: ----------------------------------------------------------------------------------------------------------------------|
+|-- 02.01.  Crear un proyecto nuevo: --------------------------------------------------------------------------------------------------------------------|
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
+
+            01. Crear una carpeta de flutter para los proyectos, por ejemplo en 'C:\..\..\Desktop\flutter'.
+
+            02. Ir a 'view / command palette (Ctrl + shift + p) / Flutter: New Project / Application'.
+            
+            03. Nombrar el proyecto, ejemplo 'app02' / Enter.
+
+
+|--------------------------------------------------------------------------------------------------------------------------------------------------------|
+|-- 03.02.  Modificar el archivo 'app/lib/main.dart': ---------------------------------------------------------------------------------------------------|
+|--------------------------------------------------------------------------------------------------------------------------------------------------------|
+
+                    01   import 'package:flutter/material.dart';
+                    02   void main(List<String> args) {
+                    03     runApp(Principal());
+                    04   }
+                    05   class Principal extends StatelessWidget {
+                    06     const Principal({super.key});
+                    07     @override
+                    08     Widget build(BuildContext context) {
+                    09       return MaterialApp(
+                    10         title: "SENA",
+                    11         home: Text('ProfeAlbeiro'),
+                    12       );
+                    13     }
+                    14   }
+                    
+
+                ┌ ------------------------------------------------------------------------------------------------------------------------------------ ┐
+                |                                                                                                                                      |
+                  EXPLICACIÓN:   
+                    
+                    ⦿   XXXXXXXXXXXXXXXXXXXXXXXXXXXXX.
+
+                |--------------------------------------------------------------------------------------------------------------------------------------|
+
+                    A.   XXXXXXXXXXXXXXXXXXXXXXXXXXXXX.
+                |                                                                                                                                      |
+                └ ------------------------------------------------------------------------------------------------------------------------------------ ┘
+
+
+
+
+
+
+
+
