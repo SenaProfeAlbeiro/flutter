@@ -13,7 +13,7 @@
 ||| --  06. MaterialApp(home: HomePrincipal()), StatefulWidget, Card(), Center()                                                                       |||
 ||| --  07. ListView.builder(), List<String> sitiosTuristicos=[]                                                                                       |||
 ||| --  08. List<Map<String, dynamic>> sitiosTuristicos = []                                                                                           |||
-||| --  09. .                                                                                                                                          |||
+||| --  09. CircleAvatar(), NetworkImage(), onTap: () {}, showModalBottomSheet(),  List<Map<String, dynamic>> sitiosTuristicos = [Colors, foto]        |||
 ||| --  10. .                                                                                                                                          |||
 ||| --  11. .                                                                                                                                          |||
 |||                                                                                                                                                    |||
@@ -128,7 +128,25 @@
             03. Nombrar el proyecto, ejemplo 'app01' / Enter.
             
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
-|-- 01.02.  Ejecutar el proyecto en el Navegador: -------------------------------------------------------------------------------------------------------|
+|-- 01.02.   Comprender el archivo 'app01/lib/main.dart': -----------------------------------------------------------------------------------------------|
+|--------------------------------------------------------------------------------------------------------------------------------------------------------|
+
+                    01   import 'package:flutter/material.dart';
+
+                ┌ ------------------------------------------------------------------------------------------------------------------------------------ ┐
+                |                                                                                                                                      |
+                  EXPLICACIÓN:   
+                    
+                    ⦿   XXXXXXXXXXXXXXXXXXXXXXXXXXXXX.
+
+                |--------------------------------------------------------------------------------------------------------------------------------------|
+
+                    A.   XXXXXXXXXXXXXXXXXXXXXXXXXXXXX.
+                |                                                                                                                                      |
+                └ ------------------------------------------------------------------------------------------------------------------------------------ ┘
+
+|--------------------------------------------------------------------------------------------------------------------------------------------------------|
+|-- 01.03.  Ejecutar el proyecto en el Navegador: -------------------------------------------------------------------------------------------------------|
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
             
             01. Abrir una 'Terminal' en Visual Studio Code: 'Terminal / New Terminal' ó 'Ctrl + Shift + ñ'.
@@ -176,7 +194,7 @@
 
 
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
-|-- 02.02.  Modificar el archivo 'app/lib/main.dart': ---------------------------------------------------------------------------------------------------|
+|-- 02.02.  Modificar el archivo 'app02/lib/main.dart': -------------------------------------------------------------------------------------------------|
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
 
                     01   import 'package:flutter/material.dart';
@@ -192,8 +210,7 @@
                     11         home: Text('ProfeAlbeiro'),
                     12       );
                     13     }
-                    14   }
-                    
+                    14   }                    
 
                 ┌ ------------------------------------------------------------------------------------------------------------------------------------ ┐
                 |                                                                                                                                      |
@@ -226,7 +243,7 @@
 
 
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
-|-- 03.02.  Modificar el archivo 'app/lib/main.dart': ---------------------------------------------------------------------------------------------------|
+|-- 03.02.  Modificar el archivo 'app03/lib/main.dart': -------------------------------------------------------------------------------------------------|
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
 
                     01   import 'package:flutter/material.dart';
@@ -286,7 +303,7 @@
 
 
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
-|-- 04.02.  Modificar el archivo 'app/lib/main.dart': ---------------------------------------------------------------------------------------------------|
+|-- 04.02.  Modificar el archivo 'app04/lib/main.dart': -------------------------------------------------------------------------------------------------|
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
 
                     01   import 'package:flutter/material.dart';
@@ -352,7 +369,7 @@
 
 
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
-|-- 05.02.  Modificar el archivo 'app/lib/main.dart': ---------------------------------------------------------------------------------------------------|
+|-- 05.02.  Modificar el archivo 'app05/lib/main.dart': -------------------------------------------------------------------------------------------------|
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
 
                     01   import 'dart:js_util';
@@ -449,7 +466,7 @@
 
 
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
-|-- 06.02.  Modificar el archivo 'app/lib/main.dart': ---------------------------------------------------------------------------------------------------|
+|-- 06.02.  Modificar el archivo 'app06/lib/main.dart': -------------------------------------------------------------------------------------------------|
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
 
                     01   import 'package:flutter/material.dart';
@@ -528,7 +545,7 @@
 
 
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
-|-- 07.02.  Modificar el archivo 'app/lib/main.dart': ---------------------------------------------------------------------------------------------------|
+|-- 07.02.  Modificar el archivo 'app07/lib/main.dart': -------------------------------------------------------------------------------------------------|
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
 
                     01   import 'package:flutter/material.dart';
@@ -730,7 +747,7 @@
 
 
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
-|-- 08.02.  Modificar el archivo 'app/lib/main.dart': ---------------------------------------------------------------------------------------------------|
+|-- 08.02.  Modificar el archivo 'app08/lib/main.dart': -------------------------------------------------------------------------------------------------|
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
 
                     01   import 'package:flutter/material.dart';
@@ -894,6 +911,227 @@
                    159       'generacion': 'Antiguo'
                    160     }
                    161   ];
+
+                ┌ ------------------------------------------------------------------------------------------------------------------------------------ ┐
+                |                                                                                                                                      |
+                  EXPLICACIÓN:   
+                    
+                    ⦿   XXXXXXXXXXXXXXXXXXXXXXXXXXXXX.
+
+                |--------------------------------------------------------------------------------------------------------------------------------------|
+
+                    A.   XXXXXXXXXXXXXXXXXXXXXXXXXXXXX.
+                |                                                                                                                                      |
+                └ ------------------------------------------------------------------------------------------------------------------------------------ ┘
+
+
+|||\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\|||
+|||----------------------------------------------------------------------------------------------------------------------------------------------------|||
+|||----- 09.  CircleAvatar(), NetworkImage(), onTap: () {}, showModalBottomSheet(),  List<Map<String, dynamic>> sitiosTuristicos = [Colors, foto] -----|||
+|||----------------------------------------------------------------------------------------------------------------------------------------------------|||
+|||\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\|||
+
+|--------------------------------------------------------------------------------------------------------------------------------------------------------|
+|-- 09.01.  Crear el proyecto 'app09': ------------------------------------------------------------------------------------------------------------------|
+|--------------------------------------------------------------------------------------------------------------------------------------------------------|
+
+            01. Crear una carpeta de flutter para los proyectos, por ejemplo en 'C:\..\..\Desktop\flutter'.
+
+            02. Ir a 'view / command palette (Ctrl + shift + p) / Flutter: New Project / Application'.
+            
+            03. Nombrar el proyecto, ejemplo 'app09' / Enter.
+
+
+|--------------------------------------------------------------------------------------------------------------------------------------------------------|
+|-- 09.02.  Modificar el archivo 'app09/lib/main.dart': -------------------------------------------------------------------------------------------------|
+|--------------------------------------------------------------------------------------------------------------------------------------------------------|
+
+                    01   import 'package:flutter/material.dart';
+                    02   void main(List<String> args) {
+                    03     runApp(Principal());
+                    04   }
+                    05   class Principal extends StatelessWidget {
+                    06     const Principal({super.key});
+                    07     @override
+                    08     Widget build(BuildContext context) {
+                    09       return MaterialApp(
+                    10         debugShowCheckedModeBanner: false,
+                    11         title: "SENA | CEET",
+                    12         home: HomePrincipal(),
+                    13       );
+                    14     }
+                    15   }
+                    16   class HomePrincipal extends StatefulWidget {
+                    17     const HomePrincipal({super.key});
+                    18     @override
+                    19     State<HomePrincipal> createState() => _HomePrincipalState();
+                    20   }
+                    21   class _HomePrincipalState extends State<HomePrincipal> {
+                    22     @override
+                    23     Widget build(BuildContext context) {
+                    24       return Scaffold(
+                    25         appBar: AppBar(
+                    26           backgroundColor: Colors.green,
+                    27           foregroundColor: Colors.white,
+                    28           title: Text("SENA | CEET"),
+                    29         ),
+                    30         body: ListView.builder(
+                    31           itemCount: sitiosTuristicos.length,
+                    32           itemBuilder: (BuildContext context, int index) {
+                    33             return ListTile(
+                    34               trailing: Icon(Icons.arrow_circle_right_outlined),
+                    35               leading: CircleAvatar(
+                    36                 backgroundImage:
+                    36                     NetworkImage(sitiosTuristicos[index]["foto_monumento"]),
+                    38               ),
+                    39               title: Text(sitiosTuristicos[index]["nombre"]),
+                    40               subtitle: Text(sitiosTuristicos[index]["ubicacion"] +
+                    41                   " " +
+                    42                   sitiosTuristicos[index]["fecha_lanzamiento"]),
+                    43               onTap: () {
+                    44                 showModalBottomSheet(
+                    45                   isScrollControlled: true,
+                    46                   context: context,
+                    47                   builder: (context) {
+                    48                     return Scaffold(
+                    49                       appBar: AppBar(
+                    50                         backgroundColor: sitiosTuristicos[index]
+                    51                             ["color_distintivo"],
+                    52                         title: Text(sitiosTuristicos[index]["nombre"]),
+                    53                       ),
+                    54                       body: Padding(
+                    55                         padding: const EdgeInsets.all(10.0),
+                    56                         child: ListView(
+                    57                           children: [
+                    58                             CircleAvatar(
+                    59                               radius: 100,
+                    60                               backgroundImage: NetworkImage(
+                    61                                   sitiosTuristicos[index]["foto_monumento"]),
+                    62                             ),
+                    63                             Text(sitiosTuristicos[index]["descripcion"]),
+                    64                             Divider(),
+                    65                             Text(sitiosTuristicos[index]["ubicacion"]),
+                    66                             Divider(),
+                    67                             Text(sitiosTuristicos[index]["fecha_lanzamiento"]),
+                    68                           ],
+                    69                         ),
+                    70                       ),
+                    71                     );
+                    72                   },
+                    73                 );
+                    74               },
+                    75             );
+                    76           },
+                    77         ),
+                    78       );
+                    79     }
+                    80   }
+                    81   List<Map<String, dynamic>> sitiosTuristicos = [
+                    82     {
+                    83       'nombre': 'La Gran Muralla China',
+                    84       'descripcion':
+                    85           'La Gran Muralla China es una antigua fortificación china construida para proteger el imperio chino de las invasiones de los pueblos nómadas del norte.',
+                    86       'ubicacion': 'China',
+                    87       'fecha_lanzamiento': 'Siglo VII a.C.',
+                    88       'generacion': 'Antiguo',
+                    89       'color_distintivo': Colors.red,
+                    90       'foto_monumento':
+                    91           'https://source.unsplash.com/featured/?Great%20Wall%20of%20China'
+                    92     },
+                    93     {
+                    94       'nombre': 'Torre Eiffel',
+                    95       'descripcion':
+                    96           'La Torre Eiffel es una torre de hierro ubicada en el Campo de Marte, en París. Es uno de los símbolos más reconocidos de Francia y del mundo.',
+                    97       'ubicacion': 'París, Francia',
+                    98       'fecha_lanzamiento': '31 de marzo de 1889',
+                    99       'generacion': 'Moderno',
+                   100       'color_distintivo': Colors.blue,
+                   101       'foto_monumento': 'https://source.unsplash.com/featured/?Eiffel%20Tower'
+                   102     },
+                   103     {
+                   104       'nombre': 'Machu Picchu',
+                   105       'descripcion':
+                   106           'Machu Picchu es una antigua ciudad inca ubicada en los Andes peruanos. Es uno de los destinos turísticos más populares del mundo debido a su impresionante arquitectura y paisajes.',
+                   107       'ubicacion': 'Cuzco, Perú',
+                   108       'fecha_lanzamiento': 'Siglo XV',
+                   109       'generacion': 'Antiguo',
+                   110       'color_distintivo': Colors.green,
+                   111       'foto_monumento': 'https://source.unsplash.com/featured/?Machu%20Picchu'
+                   112     },
+                   113     {
+                   114       'nombre': 'Pirámides de Giza',
+                   115       'descripcion':
+                   116           'Las Pirámides de Giza son una de las siete maravillas del mundo antiguo y uno de los sitios turísticos más famosos del planeta. Están ubicadas en las afueras de El Cairo, Egipto.',
+                   117       'ubicacion': 'El Cairo, Egipto',
+                   118       'fecha_lanzamiento': 'Siglo XXVI a.C.',
+                   119       'generacion': 'Antiguo',
+                   120       'color_distintivo': Colors.yellow,
+                   121       'foto_monumento':
+                   122           'https://source.unsplash.com/featured/?Pyramids%20of%20Giza'
+                   123     },
+                   124     {
+                   125       'nombre': 'Gran Cañón',
+                   126       'descripcion':
+                   127           'El Gran Cañón es un impresionante cañón tallado por el río Colorado en el estado de Arizona. Es uno de los destinos turísticos más visitados de los Estados Unidos.',
+                   128       'ubicacion': 'Arizona, Estados Unidos',
+                   129       'fecha_lanzamiento': 'Siglo XVIII',
+                   130       'generacion': 'Antiguo',
+                   131       'color_distintivo': Colors.orange,
+                   132       'foto_monumento': 'https://source.unsplash.com/featured/?Grand%20Canyon'
+                   133     },
+                   134     {
+                   135       'nombre': 'Gran Barrera de Coral',
+                   136       'descripcion':
+                   137           'La Gran Barrera de Coral es el sistema de arrecifes de coral más grande del mundo. Se encuentra frente a la costa de Queensland, Australia, y es uno de los destinos de buceo más populares del mundo.',
+                   138       'ubicacion': 'Queensland, Australia',
+                   139       'fecha_lanzamiento': 'Siglo XVII',
+                   140       'generacion': 'Antiguo',
+                   141       'color_distintivo': Colors.cyan,
+                   142       'foto_monumento':
+                   143           'https://source.unsplash.com/featured/?Great%20Barrier%20Reef'
+                   144     },
+                   145     {
+                   146       'nombre': 'Ciudad Prohibida',
+                   147       'descripcion':
+                   148           'La Ciudad Prohibida es un complejo de palacios imperiales ubicado en el centro de Pekín. Fue la residencia oficial de los emperadores chinos durante casi 500 años.',
+                   149       'ubicacion': 'Pekín, China',
+                   150       'fecha_lanzamiento': '1406',
+                   151       'generacion': 'Antiguo',
+                   152       'color_distintivo': Colors.purple,
+                   153       'foto_monumento': 'https://source.unsplash.com/featured/?Forbidden%20City'
+                   154     },
+                   155     {
+                   156       'nombre': 'Parque Nacional Yellowstone',
+                   157       'descripcion':
+                   158           'El Parque Nacional Yellowstone es el primer parque nacional del mundo y es famoso por sus geiseres, géiseres de lodo, aguas termales y vida silvestre.',
+                   159       'ubicacion': 'Wyoming, Estados Unidos',
+                   160       'fecha_lanzamiento': '1 de marzo de 1872',
+                   161       'generacion': 'Moderno',
+                   162       'color_distintivo': Colors.brown,
+                   163       'foto_monumento':
+                   164           'https://source.unsplash.com/featured/?Yellowstone%20National%20Park'
+                   165     },
+                   166     {
+                   167       'nombre': 'Isla de Pascua',
+                   168       'descripcion':
+                   169           'La Isla de Pascua es famosa por sus misteriosas estatuas de piedra llamadas moai, que fueron talladas por los antiguos habitantes de la isla. Es un destino turístico único en medio del Pacífico Sur.',
+                   170       'ubicacion': 'Chile',
+                   171       'fecha_lanzamiento': 'Siglo XIII',
+                   172       'generacion': 'Antiguo',
+                   173       'color_distintivo': Colors.teal,
+                   174       'foto_monumento': 'https://source.unsplash.com/featured/?Easter%20Island'
+                   175     },
+                   176     {
+                   177       'nombre': 'Monte Everest',
+                   178       'descripcion':
+                   179           'El Monte Everest es la montaña más alta del mundo y representa uno de los mayores desafíos para los alpinistas. Es parte de la cordillera del Himalaya, en la frontera entre Nepal y el Tíbet.',
+                   180       'ubicacion': 'Himalaya',
+                   181       'fecha_lanzamiento': '29 de mayo de 1953',
+                   182       'generacion': 'Contemporáneo',
+                   183       'color_distintivo': Colors.deepOrange,
+                   184       'foto_monumento': 'https://source.unsplash.com/featured/?Mount%20Everest'
+                   185     }
+                   186   ];
 
                 ┌ ------------------------------------------------------------------------------------------------------------------------------------ ┐
                 |                                                                                                                                      |
