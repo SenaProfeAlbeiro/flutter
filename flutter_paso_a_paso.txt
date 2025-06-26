@@ -11,7 +11,7 @@
 ||| --  04. Scaffold(appBar, body), backgroundColor, Colors, ElevatedButton()                                                                          |||
 ||| --  05. MaterialApp(debugShowCheckedModeBanner), AppBar(), foregroundColor, Padding(), Image(), ListTile(), Divider()                              |||
 ||| --  06. MaterialApp(home: HomePrincipal()), StatefulWidget, Card(), Center()                                                                       |||
-||| --  07. .                                                                                                                                          |||
+||| --  07. ListView.builder(), List<String> sitiosTuristicos=[].                                                                                                                                          |||
 ||| --  08. .                                                                                                                                          |||
 ||| --  09. .                                                                                                                                          |||
 ||| --  10. .                                                                                                                                          |||
@@ -496,6 +496,207 @@
                     42       );
                     43     }
                     44   }
+
+                ┌ ------------------------------------------------------------------------------------------------------------------------------------ ┐
+                |                                                                                                                                      |
+                  EXPLICACIÓN:   
+                    
+                    ⦿   XXXXXXXXXXXXXXXXXXXXXXXXXXXXX.
+
+                |--------------------------------------------------------------------------------------------------------------------------------------|
+
+                    A.   XXXXXXXXXXXXXXXXXXXXXXXXXXXXX.
+                |                                                                                                                                      |
+                └ ------------------------------------------------------------------------------------------------------------------------------------ ┘
+
+
+|||\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\|||
+|||----------------------------------------------------------------------------------------------------------------------------------------------------|||
+|||-------------------------------------------- 07.  ListView.builder(), List<String> sitiosTuristicos=[] ---------------------------------------------|||
+|||----------------------------------------------------------------------------------------------------------------------------------------------------|||
+|||\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\|||
+
+|--------------------------------------------------------------------------------------------------------------------------------------------------------|
+|-- 07.01.  Crear el proyecto 'app06': ------------------------------------------------------------------------------------------------------------------|
+|--------------------------------------------------------------------------------------------------------------------------------------------------------|
+
+            01. Crear una carpeta de flutter para los proyectos, por ejemplo en 'C:\..\..\Desktop\flutter'.
+
+            02. Ir a 'view / command palette (Ctrl + shift + p) / Flutter: New Project / Application'.
+            
+            03. Nombrar el proyecto, ejemplo 'app07' / Enter.
+
+
+|--------------------------------------------------------------------------------------------------------------------------------------------------------|
+|-- 07.02.  Modificar el archivo 'app/lib/main.dart': ---------------------------------------------------------------------------------------------------|
+|--------------------------------------------------------------------------------------------------------------------------------------------------------|
+
+                    01   import 'package:flutter/material.dart';
+                    02   void main(List<String> args) {
+                    03     runApp(Principal());  
+                    04   }
+                    05   class Principal extends StatelessWidget {
+                    06     const Principal({super.key});
+                    07     @override
+                    08     Widget build(BuildContext context) {
+                    09       return MaterialApp(
+                    10         title: "SENA | CEET",
+                    11         debugShowCheckedModeBanner: false,
+                    12         home: HomePrincipal(),
+                    13       );
+                    14     }
+                    15   }
+                    16   class HomePrincipal extends StatefulWidget {
+                    17     const HomePrincipal({super.key});
+                    18     @override
+                    19     State<HomePrincipal> createState() => _HomePrincipalState();
+                    20   }
+                    21   class _HomePrincipalState extends State<HomePrincipal> {
+                    22     @override
+                    23     Widget build(BuildContext context) {
+                    24       return Scaffold(
+                    25         appBar: AppBar(
+                    26           foregroundColor: Colors.white,
+                    27           backgroundColor: Colors.green,
+                    28           title: Text("Sitios Turísticos"),
+                    29         ),
+                    30         body: Padding(
+                    31           padding: const EdgeInsets.all(20.0),
+                    32           child: ListView.builder(          
+                    33             itemCount: sitiosTuristicos.length,
+                    34             itemBuilder: (BuildContext context, int index) {
+                    35               return Card(
+                    36                 child: ListTile(
+                    37                   leading: Icon(Icons.star),
+                    38                   title: Text(sitiosTuristicos[index]),
+                    39                 ),
+                    40               );
+                    41             },
+                    42           ),
+                    43         ),      
+                    44       );
+                    45     }
+                    46   }
+                    47   List<String> sitiosTuristicos = [
+                    48       "La Gran Muralla China",
+                    49       "La Torre Eiffel, París, Francia",
+                    50       "La Estatua de la Libertad, Nueva York, Estados Unidos",
+                    51       "El Taj Mahal, Agra, India",
+                    52       "El Coliseo Romano, Roma, Italia",
+                    53       "Machu Picchu, Perú",
+                    54       "Las Pirámides de Giza, Egipto",
+                    55       "El Gran Cañón, Arizona, Estados Unidos",
+                    56       "La Gran Barrera de Coral, Australia",
+                    57       "La Ciudad Prohibida, Beijing, China",
+                    58       "El Parque Nacional de Yellowstone, Wyoming, Estados Unidos",
+                    59       "La Isla de Pascua, Chile",
+                    60       "El Monte Everest, Nepal/Tíbet",
+                    61       "La Alhambra, Granada, España",
+                    62       "El Parque Nacional de Banff, Alberta, Canadá",
+                    63       "La Isla de Santorini, Grecia",
+                    64       "El Parque Nacional de Yosemite, California, Estados Unidos",
+                    65       "Las Cataratas del Niágara, Canadá/Estados Unidos",
+                    66       "El Kremlin, Moscú, Rusia",
+                    67       "La Torre de Pisa, Italia",
+                    68       "El Parque Nacional de Serengeti, Tanzania",
+                    69       "La Gran Mezquita de Sheikh Zayed, Abu Dhabi, Emiratos Árabes Unidos",
+                    70       "La Isla Fraser, Queensland, Australia",
+                    71       "La Torre Inclinada de Pisa, Italia",
+                    72       "La Ópera de Sídney, Australia",
+                    73       "El Parque Nacional de Zion, Utah, Estados Unidos",
+                    74       "La Isla de Bali, Indonesia",
+                    75       "El Canal de Panamá",
+                    76       "La Ciudad de Petra, Jordania",
+                    77       "El Parque Nacional Kruger, Sudáfrica",
+                    78       "La Casa de la Ópera de Sídney, Australia",
+                    79       "La Estatua del Cristo Redentor, Río de Janeiro, Brasil",
+                    80       "El Puente Golden Gate, San Francisco, Estados Unidos",
+                    81       "La Ciudad de Praga, República Checa",
+                    82       "El Monte Kilimanjaro, Tanzania",
+                    83       "La Gran Muralla, China",
+                    84       "El Monte Rushmore, Dakota del Sur, Estados Unidos",
+                    85       "La Acrópolis de Atenas, Grecia",
+                    86       "El Parque Nacional de Yellowstone, Estados Unidos",
+                    87       "La Isla de Jeju, Corea del Sur",
+                    88       "El Parque Nacional del Gran Cañón, Arizona, Estados Unidos",
+                    89       "La Isla de Maui, Hawái, Estados Unidos",
+                    90       "El Parque Nacional del Gran Cañón, Estados Unidos",
+                    91       "El Templo de Borobudur, Java, Indonesia",
+                    92       "El Monte Fuji, Japón",
+                    93       "La Torre CN, Toronto, Canadá",
+                    94       "La Isla de Vancouver, Columbia Británica, Canadá",
+                    95       "El Museo del Louvre, París, Francia",
+                    96       "El Templo de Angkor Wat, Camboya",
+                    97       "La Ciudad de Kyoto, Japón",
+                    98       "El Palacio de Buckingham, Londres, Reino Unido",
+                    99       "El Gran Palacio, Bangkok, Tailandia",
+                   100       "El Parque Nacional Torres del Paine, Chile",
+                   101       "El Parque Nacional de los Lagos de Plitvice, Croacia",
+                   102       "La Estatua de la Libertad, Estados Unidos",
+                   103       "La Isla de Santorini, Grecia",
+                   104       "El Parque Nacional de Banff, Canadá",
+                   105       "El Gran Cañón del Colorado, Estados Unidos",
+                   106       "El Parque Nacional de Yellowstone, Estados Unidos",
+                   107       "La Ciudad de Praga, República Checa",
+                   108       "El Parque Nacional de Yosemite, Estados Unidos",
+                   109       "El Monte Everest, Nepal",
+                   110       "La Isla de Pascua, Chile",
+                   111       "La Gran Muralla China, China",
+                   112       "El Taj Mahal, India",
+                   113       "El Coliseo Romano, Italia",
+                   114       "La Pirámide de Giza, Egipto",
+                   115       "La Alhambra, España",
+                   116       "El Kremlin, Rusia",
+                   117       "La Torre de Pisa, Italia",
+                   118       "La Ópera de Sídney, Australia",
+                   119       "El Canal de Panamá",
+                   120       "La Ciudad de Petra, Jordania",
+                   121       "La Estatua del Cristo Redentor, Brasil",
+                   122       "El Puente Golden Gate, Estados Unidos",
+                   123       "El Monte Rushmore, Estados Unidos",
+                   124       "La Acrópolis de Atenas, Grecia",
+                   125       "La Isla de Jeju, Corea del Sur",
+                   126       "El Templo de Borobudur, Indonesia",
+                   127       "El Monte Fuji, Japón",
+                   128       "La Torre CN, Canadá",
+                   129       "El Museo del Louvre, Francia",
+                   130       "El Templo de Angkor Wat, Camboya",
+                   131       "El Palacio de Buckingham, Reino Unido",
+                   132       "El Gran Palacio, Tailandia",
+                   133       "El Parque Nacional Torres del Paine, Chile",
+                   134       "El Parque Nacional de los Lagos de Plitvice, Croacia",
+                   135       "La Estatua de la Libertad, Estados Unidos",
+                   136       "La Isla de Santorini, Grecia",
+                   137       "El Parque Nacional de Banff, Canadá",
+                   138       "El Gran Cañón del Colorado, Estados Unidos",
+                   139       "El Parque Nacional de Yellowstone, Estados Unidos",
+                   140       "La Ciudad de Praga, República Checa",
+                   141       "El Parque Nacional de Yosemite, Estados Unidos",
+                   142       "El Monte Everest, Nepal",
+                   143       "La Isla de Pascua, Chile",
+                   144       "La Gran Muralla China, China",
+                   145       "El Taj Mahal, India",
+                   146       "El Coliseo Romano, Italia",
+                   147       "La Pirámide de Giza, Egipto",
+                   148       "La Alhambra, España",
+                   149       "El Kremlin, Rusia",
+                   150       "La Torre de Pisa, Italia",
+                   151       "La Ópera de Sídney, Australia",
+                   152       "El Canal de Panamá",
+                   153       "La Ciudad de Petra, Jordania",
+                   154       "La Estatua del Cristo Redentor, Brasil",
+                   155       "El Puente Golden Gate, Estados Unidos",
+                   156       "El Monte Rushmore, Estados Unidos",
+                   157       "La Acrópolis de Atenas, Grecia",
+                   158       "La Isla de Jeju, Corea del Sur",
+                   159       "El Templo de Borobudur, Indonesia",
+                   160       "El Monte Fuji, Japón",
+                   161       "La Torre CN, Canadá",
+                   162       "El Museo del Louvre, Francia",
+                   163       "El Templo de Angkor Wat, Camboya",
+                   164       "El Palacio de Buckingham, Reino Unido",
+                   165       "El Gran Palacio, Tailand"
+                   166   ];
 
                 ┌ ------------------------------------------------------------------------------------------------------------------------------------ ┐
                 |                                                                                                                                      |
