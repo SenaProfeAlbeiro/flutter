@@ -11,8 +11,8 @@
 ||| --  04. Scaffold(appBar, body), backgroundColor, Colors, ElevatedButton()                                                                          |||
 ||| --  05. MaterialApp(debugShowCheckedModeBanner), AppBar(), foregroundColor, Padding(), Image(), ListTile(), Divider()                              |||
 ||| --  06. MaterialApp(home: HomePrincipal()), StatefulWidget, Card(), Center()                                                                       |||
-||| --  07. ListView.builder(), List<String> sitiosTuristicos=[].                                                                                                                                          |||
-||| --  08. .                                                                                                                                          |||
+||| --  07. ListView.builder(), List<String> sitiosTuristicos=[]                                                                                       |||
+||| --  08. List<Map<String, dynamic>> sitiosTuristicos = []                                                                                           |||
 ||| --  09. .                                                                                                                                          |||
 ||| --  10. .                                                                                                                                          |||
 ||| --  11. .                                                                                                                                          |||
@@ -517,7 +517,7 @@
 |||\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\|||
 
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
-|-- 07.01.  Crear el proyecto 'app06': ------------------------------------------------------------------------------------------------------------------|
+|-- 07.01.  Crear el proyecto 'app07': ------------------------------------------------------------------------------------------------------------------|
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
 
             01. Crear una carpeta de flutter para los proyectos, por ejemplo en 'C:\..\..\Desktop\flutter'.
@@ -697,6 +697,203 @@
                    164       "El Palacio de Buckingham, Reino Unido",
                    165       "El Gran Palacio, Tailand"
                    166   ];
+
+                ┌ ------------------------------------------------------------------------------------------------------------------------------------ ┐
+                |                                                                                                                                      |
+                  EXPLICACIÓN:   
+                    
+                    ⦿   XXXXXXXXXXXXXXXXXXXXXXXXXXXXX.
+
+                |--------------------------------------------------------------------------------------------------------------------------------------|
+
+                    A.   XXXXXXXXXXXXXXXXXXXXXXXXXXXXX.
+                |                                                                                                                                      |
+                └ ------------------------------------------------------------------------------------------------------------------------------------ ┘
+
+
+
+|||\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\|||
+|||----------------------------------------------------------------------------------------------------------------------------------------------------|||
+|||---------------------------------------------- 08.  List<Map<String, dynamic>> sitiosTuristicos = [] -----------------------------------------------|||
+|||----------------------------------------------------------------------------------------------------------------------------------------------------|||
+|||\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\|||
+
+|--------------------------------------------------------------------------------------------------------------------------------------------------------|
+|-- 08.01.  Crear el proyecto 'app08': ------------------------------------------------------------------------------------------------------------------|
+|--------------------------------------------------------------------------------------------------------------------------------------------------------|
+
+            01. Crear una carpeta de flutter para los proyectos, por ejemplo en 'C:\..\..\Desktop\flutter'.
+
+            02. Ir a 'view / command palette (Ctrl + shift + p) / Flutter: New Project / Application'.
+            
+            03. Nombrar el proyecto, ejemplo 'app08' / Enter.
+
+
+|--------------------------------------------------------------------------------------------------------------------------------------------------------|
+|-- 08.02.  Modificar el archivo 'app/lib/main.dart': ---------------------------------------------------------------------------------------------------|
+|--------------------------------------------------------------------------------------------------------------------------------------------------------|
+
+                    01   import 'package:flutter/material.dart';
+                    02   void main(List<String> args) {
+                    03     runApp(Principal());
+                    04   }
+                    05   class Principal extends StatelessWidget {
+                    06     const Principal({super.key});
+                    07     @override
+                    08     Widget build(BuildContext context) {
+                    09       return MaterialApp(
+                    10         debugShowCheckedModeBanner: false,
+                    11         title: "SENA | CEET",
+                    12         home: HomePrinicipal(),
+                    13       );
+                    14     }
+                    15   }
+                    16   class HomePrinicipal extends StatefulWidget {
+                    17     const HomePrinicipal({super.key});
+                    18     @override
+                    19     State<HomePrinicipal> createState() => _HomePrinicipalState();
+                    20   }
+                    21   class _HomePrinicipalState extends State<HomePrinicipal> {
+                    22     @override
+                    23     Widget build(BuildContext context) {
+                    24       return Scaffold(
+                    25         appBar: AppBar(
+                    26           foregroundColor: Colors.white,
+                    27           backgroundColor: Colors.green,
+                    28           title: Text("SENA | CEET"),
+                    29         ),
+                    30         body: ListView.builder(
+                    31           itemCount: sitiosTuristicos.length,
+                    32           itemBuilder: (BuildContext context, int index) {
+                    33             return ListTile(
+                    34               leading: Icon(Icons.flag),
+                    35               title: Text(sitiosTuristicos[index]['nombre']),
+                    36               subtitle: Text(sitiosTuristicos[index]['ubicacion']),
+                    37             );
+                    38           },
+                    39         ),
+                    40       );
+                    41     }
+                    42   }
+                    43   List<Map<String, dynamic>> sitiosTuristicos = [
+                    44     {
+                    45       'nombre': 'La Gran Muralla China',
+                    46       'pais': 'China',
+                    47       'descripcion':
+                    48           'La Gran Muralla China es una antigua fortificación china construida para proteger el imperio chino de las invasiones de los pueblos nómadas del norte.',
+                    49       'ubicacion': 'China',
+                    50       'fecha_lanzamiento': 'Siglo VII a.C.',
+                    51       'generacion': 'Antiguo'
+                    52     },
+                    53     {
+                    54       'nombre': 'Torre Eiffel',
+                    55       'pais': 'Francia',
+                    56       'descripcion':
+                    57           'La Torre Eiffel es una torre de hierro ubicada en el Campo de Marte, en París. Es uno de los símbolos más reconocidos de Francia y del mundo.',
+                    58       'ubicacion': 'París, Francia',
+                    59       'fecha_lanzamiento': '31 de marzo de 1889',
+                    60       'generacion': 'Moderno'
+                    61     },
+                    62     {
+                    63       'nombre': 'Estadio Maracaná',
+                    64       'pais': 'Brasil',
+                    65       'descripcion':
+                    66           'El Estadio Maracaná es uno de los estadios de fútbol más grandes del mundo y ha sido sede de importantes eventos deportivos, incluida la final de la Copa del Mundo de la FIFA.',
+                    67       'ubicacion': 'Río de Janeiro, Brasil',
+                    68       'fecha_lanzamiento': '2 de junio de 1950',
+                    69       'generacion': 'Contemporáneo'
+                    70     },
+                    71     {
+                    72       'nombre': 'Machu Picchu',
+                    73       'pais': 'Perú',
+                    74       'descripcion':
+                    75           'Machu Picchu es una antigua ciudad inca ubicada en los Andes peruanos. Es uno de los destinos turísticos más populares del mundo debido a su impresionante arquitectura y paisajes.',
+                    76       'ubicacion': 'Cuzco, Perú',
+                    77       'fecha_lanzamiento': 'Siglo XV',
+                    78       'generacion': 'Antiguo'
+                    79     },
+                    80     {
+                    81       'nombre': 'Coliseo Romano',
+                    82       'pais': 'Italia',
+                    83       'descripcion':
+                    84           'El Coliseo Romano es un antiguo anfiteatro ubicado en el centro de Roma. Es uno de los monumentos más famosos del mundo y un símbolo del Imperio Romano.',
+                    85       'ubicacion': 'Roma, Italia',
+                    86       'fecha_lanzamiento': '80 d.C.',
+                    87       'generacion': 'Antiguo'
+                    88     },
+                    89     {
+                    90       'nombre': 'Pirámides de Giza',
+                    91       'pais': 'Egipto',
+                    92       'descripcion':
+                    93           'Las Pirámides de Giza son una de las siete maravillas del mundo antiguo y uno de los sitios turísticos más famosos del planeta. Están ubicadas en las afueras de El Cairo, Egipto.',
+                    94       'ubicacion': 'El Cairo, Egipto',
+                    95       'fecha_lanzamiento': 'Siglo XXVI a.C.',
+                    96       'generacion': 'Antiguo'
+                    97     },
+                    98     {
+                    99       'nombre': 'Gran Cañón',
+                   100       'pais': 'Estados Unidos',
+                   101       'descripcion':
+                   102           'El Gran Cañón es un impresionante cañón tallado por el río Colorado en el estado de Arizona. Es uno de los destinos turísticos más visitados de los Estados Unidos.',
+                   103       'ubicacion': 'Arizona, Estados Unidos',
+                   104       'fecha_lanzamiento': 'Siglo XVIII',
+                   105       'generacion': 'Antiguo'
+                   106     },
+                   107     {
+                   108       'nombre': 'Gran Barrera de Coral',
+                   109       'pais': 'Australia',
+                   110       'descripcion':
+                   111           'La Gran Barrera de Coral es el sistema de arrecifes de coral más grande del mundo. Se encuentra frente a la costa de Queensland, Australia, y es uno de los destinos de buceo más populares del mundo.',
+                   112       'ubicacion': 'Queensland, Australia',
+                   113       'fecha_lanzamiento': 'Siglo XVII',
+                   114       'generacion': 'Antiguo'
+                   115     },
+                   116     {
+                   117       'nombre': 'Ciudad Prohibida',
+                   118       'pais': 'China',
+                   119       'descripcion':
+                   120           'La Ciudad Prohibida es un complejo de palacios imperiales ubicado en el centro de Pekín. Fue la residencia oficial de los emperadores chinos durante casi 500 años.',
+                   121       'ubicacion': 'Pekín, China',
+                   122       'fecha_lanzamiento': '1406',
+                   123       'generacion': 'Antiguo'
+                   124     },
+                   125     {
+                   126       'nombre': 'Parque Nacional Yellowstone',
+                   127       'pais': 'Estados Unidos',
+                   128       'descripcion':
+                   129           'El Parque Nacional Yellowstone es el primer parque nacional del mundo y es famoso por sus geiseres, géiseres de lodo, aguas termales y vida silvestre.',
+                   130       'ubicacion': 'Wyoming, Estados Unidos',
+                   131       'fecha_lanzamiento': '1 de marzo de 1872',
+                   132       'generacion': 'Moderno'
+                   133     },
+                   134     {
+                   135       'nombre': 'Isla de Pascua',
+                   136       'pais': 'Chile',
+                   137       'descripcion':
+                   138           'La Isla de Pascua es famosa por sus misteriosas estatuas de piedra llamadas moai, que fueron talladas por los antiguos habitantes de la isla. Es un destino turístico único en medio del Pacífico Sur.',
+                   139       'ubicacion': 'Chile',
+                   140       'fecha_lanzamiento': 'Siglo XIII',
+                   141       'generacion': 'Antiguo'
+                   142     },
+                   143     {
+                   144       'nombre': 'Monte Everest',
+                   145       'pais': 'Nepal/Tíbet',
+                   146       'descripcion':
+                   147           'El Monte Everest es la montaña más alta del mundo y representa uno de los mayores desafíos para los alpinistas. Es parte de la cordillera del Himalaya, en la frontera entre Nepal y el Tíbet.',
+                   148       'ubicacion': 'Himalaya',
+                   149       'fecha_lanzamiento': '29 de mayo de 1953',
+                   150       'generacion': 'Contemporáneo'
+                   151     },
+                   152     {
+                   153       'nombre': 'Alhambra',
+                   154       'pais': 'España',
+                   155       'descripcion':
+                   156           'La Alhambra es un complejo palaciego y fortaleza ubicado en Granada, España. Es un ejemplo excepcional de la arquitectura islámica y uno de los lugares más visitados de España.',
+                   157       'ubicacion': 'Granada, España',
+                   158       'fecha_lanzamiento': 'Siglo IX',
+                   159       'generacion': 'Antiguo'
+                   160     }
+                   161   ];
 
                 ┌ ------------------------------------------------------------------------------------------------------------------------------------ ┐
                 |                                                                                                                                      |
