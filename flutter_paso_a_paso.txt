@@ -14,7 +14,7 @@
 ||| --  07. ListView.builder(), List<String> sitiosTuristicos=[]                                                                                       |||
 ||| --  08. List<Map<String, dynamic>> sitiosTuristicos = []                                                                                           |||
 ||| --  09. CircleAvatar(), NetworkImage(), onTap: () {}, showModalBottomSheet(),  List<Map<String, dynamic>> sitiosTuristicos = [Colors, foto]        |||
-||| --  10. .                                                                                                                                          |||
+||| --  10. FloatingActionButton(), TextFormField(), TextEditingController()                                                                           |||
 ||| --  11. .                                                                                                                                          |||
 |||                                                                                                                                                    |||
 ||| --  AUTOR:  ALBEIRO RAMOS. SENA, 2025.                                                                                                             |||
@@ -1132,6 +1132,309 @@
                    184       'foto_monumento': 'https://source.unsplash.com/featured/?Mount%20Everest'
                    185     }
                    186   ];
+
+                ┌ ------------------------------------------------------------------------------------------------------------------------------------ ┐
+                |                                                                                                                                      |
+                  EXPLICACIÓN:   
+                    
+                    ⦿   XXXXXXXXXXXXXXXXXXXXXXXXXXXXX.
+
+                |--------------------------------------------------------------------------------------------------------------------------------------|
+
+                    A.   XXXXXXXXXXXXXXXXXXXXXXXXXXXXX.
+                |                                                                                                                                      |
+                └ ------------------------------------------------------------------------------------------------------------------------------------ ┘
+
+
+
+|||\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\|||
+|||----------------------------------------------------------------------------------------------------------------------------------------------------|||
+|||----- 10.  FloatingActionButton(), TextFormField(), TextEditingController() ------------------------------------------------------------------------|||
+|||----------------------------------------------------------------------------------------------------------------------------------------------------|||
+|||\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\|||
+
+|--------------------------------------------------------------------------------------------------------------------------------------------------------|
+|-- 10.01.  Crear el proyecto 'app10': ------------------------------------------------------------------------------------------------------------------|
+|--------------------------------------------------------------------------------------------------------------------------------------------------------|
+
+            01. Crear una carpeta de flutter para los proyectos, por ejemplo en 'C:\..\..\Desktop\flutter'.
+
+            02. Ir a 'view / command palette (Ctrl + shift + p) / Flutter: New Project / Application'.
+            
+            03. Nombrar el proyecto, ejemplo 'app10' / Enter.
+
+
+|--------------------------------------------------------------------------------------------------------------------------------------------------------|
+|-- 10.02.  Modificar el archivo 'app10/lib/main.dart': -------------------------------------------------------------------------------------------------|
+|--------------------------------------------------------------------------------------------------------------------------------------------------------|
+
+                    01   import 'package:flutter/material.dart';
+                    02   void main(List<String> args) {
+                    03     runApp(const Principal());
+                    04   }
+                    05   final txtNombre = TextEditingController();
+                    06   final txtDescripcion = TextEditingController();
+                    07   final txtFechaLanz = TextEditingController();
+                    08   final txtUbicacion = TextEditingController();
+                    09   final txtFotografia = TextEditingController();
+                    10   final txtColor = TextEditingController();
+                    11   class Principal extends StatelessWidget {
+                    12     const Principal({super.key});
+                    13     @override
+                    14     Widget build(BuildContext context) {
+                    15       return MaterialApp(
+                    16         debugShowCheckedModeBanner: false,
+                    17         title: "SENA | CEET",
+                    18         home: HomePrincipal(),
+                    19       );
+                    20     }
+                    21   }
+                    22   class HomePrincipal extends StatefulWidget {
+                    23     const HomePrincipal({super.key});
+                    24     @override
+                    25     State<HomePrincipal> createState() => _HomePrincipalState();
+                    26   }
+                    27   class _HomePrincipalState extends State<HomePrincipal> {
+                    28     @override
+                    29     Widget build(BuildContext context) {
+                    30       return Scaffold(
+                    31         appBar: AppBar(
+                    32           title: Text("Sitios Turísticos"),
+                    33           backgroundColor: Colors.green,
+                    34           foregroundColor: Colors.white,
+                    35         ),
+                    36         body: ListView.builder(
+                    37           itemCount: sitiosTuristicos.length,
+                    38           itemBuilder: (BuildContext context, int index) {
+                    39             return ListTile(
+                    40               leading: CircleAvatar(
+                    41                 backgroundImage:
+                    42                     NetworkImage(sitiosTuristicos[index]["foto_monumento"]),
+                    43               ),
+                    44               title: Text(sitiosTuristicos[index]["nombre"]),
+                    45               subtitle: Text(sitiosTuristicos[index]["ubicacion"]),
+                    46               trailing: Icon(Icons.arrow_circle_right_sharp),
+                    47               onTap: () {
+                    48                 showModalBottomSheet(
+                    49                   context: context,
+                    50                   builder: (context) {
+                    51                     return Scaffold(
+                    52                       appBar: AppBar(
+                    53                         title: Text(sitiosTuristicos[index]["nombre"]),
+                    54                       ),
+                    55                       body: ListView(
+                    56                         children: [
+                    57                           CircleAvatar(
+                    58                             radius: 100,
+                    59                             backgroundImage: NetworkImage(
+                    60                                 sitiosTuristicos[index]["foto_monumento"]),
+                    61                           ),
+                    62                           Text(sitiosTuristicos[index]["descripcion"]),
+                    63                         ],
+                    64                       ),
+                    65                     );
+                    66                   },
+                    67                 );
+                    68               },
+                    69             );
+                    70           },
+                    71         ),
+                    72         floatingActionButton: FloatingActionButton(
+                    73           foregroundColor: Colors.white,
+                    74           backgroundColor: Colors.purple,
+                    75           onPressed: () {
+                    76             showModalBottomSheet(
+                    77               isScrollControlled: true,
+                    78               context: context,
+                    79               builder: (context) {
+                    80                 return Scaffold(
+                    81                   appBar: AppBar(
+                    82                     foregroundColor: Colors.white,
+                    83                     backgroundColor: Colors.purple,
+                    84                     title: Text("Nuevo Sitio Turístico"),
+                    85                   ),
+                    86                   body: Padding(
+                    87                     padding: const EdgeInsets.all(10.0),
+                    88                     child: Column(
+                    89                       children: [
+                    90                         TextFormField(
+                    91                           controller: txtNombre,
+                    92                           decoration: InputDecoration(
+                    93                               labelText: "Nombre",
+                    94                               hintText: "Nombre del sitio turístico",
+                    95                               icon: Icon(Icons.file_copy)),
+                    96                         ),
+                    97                         TextFormField(
+                    98                           controller: txtDescripcion,
+                    99                           decoration: InputDecoration(
+                   100                               labelText: "Descripción",
+                   101                               hintText: "Descripción del sitio turístico",
+                   102                               icon: Icon(Icons.file_copy)),
+                   103                         ),
+                   104                         TextFormField(
+                   105                           controller: txtFechaLanz,
+                   106                           decoration: InputDecoration(
+                   107                               labelText: "Fecha de lanzamiento",
+                   108                               hintText:
+                   109                                   "Fecha de lanzamiento del sitio turístico",
+                   110                               icon: Icon(Icons.file_copy)),
+                   111                         ),
+                   112                         TextFormField(
+                   113                           controller: txtFotografia,
+                   114                           decoration: InputDecoration(
+                   115                               labelText: "Ubicación",
+                   116                               hintText: "Ubicación del sitio turístico",
+                   117                               icon: Icon(Icons.file_copy)),
+                   118                         ),
+                   119                         TextFormField(
+                   120                           controller: txtColor,
+                   121                           decoration: InputDecoration(
+                   122                               labelText: "Fotografía",
+                   123                               hintText: "Fotografía del sitio turístico",
+                   124                               icon: Icon(Icons.file_copy)),
+                   125                         ),
+                   126                         TextFormField(
+                   127                           decoration: InputDecoration(
+                   128                               labelText: "Color",
+                   129                               hintText: "Color que identifica el sitio turístico",
+                   130                               icon: Icon(Icons.file_copy)),
+                   131                         ),
+                   132                       ],
+                   133                     ),
+                   134                   ),
+                   135                   floatingActionButton: FloatingActionButton(
+                   136                     foregroundColor: Colors.white,
+                   137                     backgroundColor: Colors.green,
+                   138                     onPressed: () {
+                   139                       if (txtNombre.text == "") {
+                   140                         ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                   141                             backgroundColor: Colors.red,
+                   142                             content: Text(
+                   143                                 "ERROR! El nombre del sitio turístico está vacío")));
+                   144                       } else {
+                   145                         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                   146                             backgroundColor: Colors.green,
+                   147                             content: Text(
+                   148                                 "Se ha guardado satisfactoriamente el sitio turístico: ${txtNombre.text}")));
+                   149                       }
+                   150                     },
+                   151                     child: Icon(Icons.save),
+                   152                   ),
+                   153                 );
+                   154               },
+                   155             );
+                   156           },
+                   157           child: Icon(Icons.account_circle),
+                   158         ),
+                   159       );
+                   160     }
+                   161   }
+                   162   List<Map<String, dynamic>> sitiosTuristicos = [
+                   163     {
+                   164       'nombre': 'La Gran Muralla China',
+                   165       'descripcion':
+                   166           'La Gran Muralla China es una antigua fortificación china construida para proteger el imperio chino de las invasiones de los pueblos nómadas del norte.',
+                   167       'ubicacion': 'China',
+                   168       'fecha_lanzamiento': 'Siglo VII a.C.',
+                   169       'generacion': 'Antiguo',
+                   170       'color_distintivo': Colors.red,
+                   171       'foto_monumento':
+                   172           'https://source.unsplash.com/featured/?Great%20Wall%20of%20China'
+                   173     },
+                   174     {
+                   175       'nombre': 'Torre Eiffel',
+                   176       'descripcion':
+                   177           'La Torre Eiffel es una torre de hierro ubicada en el Campo de Marte, en París. Es uno de los símbolos más reconocidos de Francia y del mundo.',
+                   178       'ubicacion': 'París, Francia',
+                   179       'fecha_lanzamiento': '31 de marzo de 1889',
+                   180       'generacion': 'Moderno',
+                   181       'color_distintivo': Colors.blue,
+                   182       'foto_monumento': 'https://source.unsplash.com/featured/?Eiffel%20Tower'
+                   183     },
+                   184     {
+                   185       'nombre': 'Machu Picchu',
+                   186       'descripcion':
+                   187           'Machu Picchu es una antigua ciudad inca ubicada en los Andes peruanos. Es uno de los destinos turísticos más populares del mundo debido a su impresionante arquitectura y paisajes.',
+                   188       'ubicacion': 'Cuzco, Perú',
+                   189       'fecha_lanzamiento': 'Siglo XV',
+                   190       'generacion': 'Antiguo',
+                   191       'color_distintivo': Colors.green,
+                   192       'foto_monumento': 'https://source.unsplash.com/featured/?Machu%20Picchu'
+                   193     },
+                   194     {
+                   195       'nombre': 'Pirámides de Giza',
+                   196       'descripcion':
+                   197           'Las Pirámides de Giza son una de las siete maravillas del mundo antiguo y uno de los sitios turísticos más famosos del planeta. Están ubicadas en las afueras de El Cairo, Egipto.',
+                   198       'ubicacion': 'El Cairo, Egipto',
+                   199       'fecha_lanzamiento': 'Siglo XXVI a.C.',
+                   200       'generacion': 'Antiguo',
+                   201       'color_distintivo': Colors.yellow,
+                   202       'foto_monumento':
+                   203           'https://source.unsplash.com/featured/?Pyramids%20of%20Giza'
+                   204     },
+                   205     {
+                   206       'nombre': 'Gran Cañón',
+                   207       'descripcion':
+                   208           'El Gran Cañón es un impresionante cañón tallado por el río Colorado en el estado de Arizona. Es uno de los destinos turísticos más visitados de los Estados Unidos.',
+                   209       'ubicacion': 'Arizona, Estados Unidos',
+                   210       'fecha_lanzamiento': 'Siglo XVIII',
+                   211       'generacion': 'Antiguo',
+                   212       'color_distintivo': Colors.orange,
+                   213       'foto_monumento': 'https://source.unsplash.com/featured/?Grand%20Canyon'
+                   214     },
+                   215     {
+                   216       'nombre': 'Gran Barrera de Coral',
+                   217       'descripcion':
+                   218           'La Gran Barrera de Coral es el sistema de arrecifes de coral más grande del mundo. Se encuentra frente a la costa de Queensland, Australia, y es uno de los destinos de buceo más populares del mundo.',
+                   219       'ubicacion': 'Queensland, Australia',
+                   220       'fecha_lanzamiento': 'Siglo XVII',
+                   221       'generacion': 'Antiguo',
+                   222       'color_distintivo': Colors.cyan,
+                   223       'foto_monumento':
+                   224           'https://source.unsplash.com/featured/?Great%20Barrier%20Reef'
+                   225     },
+                   226     {
+                   227       'nombre': 'Ciudad Prohibida',
+                   228       'descripcion':
+                   229           'La Ciudad Prohibida es un complejo de palacios imperiales ubicado en el centro de Pekín. Fue la residencia oficial de los emperadores chinos durante casi 500 años.',
+                   230       'ubicacion': 'Pekín, China',
+                   231       'fecha_lanzamiento': '1406',
+                   232       'generacion': 'Antiguo',
+                   233       'color_distintivo': Colors.purple,
+                   234       'foto_monumento': 'https://source.unsplash.com/featured/?Forbidden%20City'
+                   235     },
+                   236     {
+                   237       'nombre': 'Parque Nacional Yellowstone',
+                   238       'descripcion':
+                   239           'El Parque Nacional Yellowstone es el primer parque nacional del mundo y es famoso por sus geiseres, géiseres de lodo, aguas termales y vida silvestre.',
+                   240       'ubicacion': 'Wyoming, Estados Unidos',
+                   241       'fecha_lanzamiento': '1 de marzo de 1872',
+                   242       'generacion': 'Moderno',
+                   243       'color_distintivo': Colors.brown,
+                   244       'foto_monumento':
+                   245           'https://source.unsplash.com/featured/?Yellowstone%20National%20Park'
+                   246     },
+                   247     {
+                   248       'nombre': 'Isla de Pascua',
+                   249       'descripcion':
+                   250           'La Isla de Pascua es famosa por sus misteriosas estatuas de piedra llamadas moai, que fueron talladas por los antiguos habitantes de la isla. Es un destino turístico único en medio del Pacífico Sur.',
+                   251       'ubicacion': 'Chile',
+                   252       'fecha_lanzamiento': 'Siglo XIII',
+                   253       'generacion': 'Antiguo',
+                   254       'color_distintivo': Colors.teal,
+                   255       'foto_monumento': 'https://source.unsplash.com/featured/?Easter%20Island'
+                   256     },
+                   257     {
+                   258       'nombre': 'Monte Everest',
+                   259       'descripcion':
+                   260           'El Monte Everest es la montaña más alta del mundo y representa uno de los mayores desafíos para los alpinistas. Es parte de la cordillera del Himalaya, en la frontera entre Nepal y el Tíbet.',
+                   261       'ubicacion': 'Himalaya',
+                   262       'fecha_lanzamiento': '29 de mayo de 1953',
+                   263       'generacion': 'Contemporáneo',
+                   264       'color_distintivo': Colors.deepOrange,
+                   265       'foto_monumento': 'https://source.unsplash.com/featured/?Mount%20Everest'
+                   266     }
+                   267   ];
 
                 ┌ ------------------------------------------------------------------------------------------------------------------------------------ ┐
                 |                                                                                                                                      |
