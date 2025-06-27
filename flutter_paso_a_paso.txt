@@ -132,6 +132,131 @@
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
 
                     01   import 'package:flutter/material.dart';
+                    02
+                    03    void main() {
+                    04      runApp(const MyApp());
+                    05    }
+                    06
+                    07   class MyApp extends StatelessWidget {
+                    08     const MyApp({super.key});
+                    09 
+                    10     // This widget is the root of your application.
+                    11     @override
+                    12     Widget build(BuildContext context) {
+                    13       return MaterialApp(
+                    14         title: 'Flutter Demo',
+                    15         theme: ThemeData(
+                    16           // This is the theme of your application.
+                    17           //
+                    18           // TRY THIS: Try running your application with "flutter run". You'll see
+                    19           // the application has a purple toolbar. Then, without quitting the app,
+                    20           // try changing the seedColor in the colorScheme below to Colors.green
+                    21           // and then invoke "hot reload" (save your changes or press the "hot
+                    22           // reload" button in a Flutter-supported IDE, or press "r" if you used
+                    23           // the command line to start the app).
+                    24           //
+                    25           // Notice that the counter didn't reset back to zero; the application
+                    26           // state is not lost during the reload. To reset the state, use hot
+                    27           // restart instead.
+                    28           //
+                    29           // This works for code too, not just values: Most code changes can be
+                    30           // tested with just a hot reload.
+                    31           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+                    32           useMaterial3: true,
+                    33         ),
+                    34         home: const MyHomePage(title: 'Flutter Demo Home Page'),
+                    35       );
+                    36     }
+                    37   }
+                    38 
+                    39   class MyHomePage extends StatefulWidget {
+                    40     const MyHomePage({super.key, required this.title});
+                    41 
+                    42     // This widget is the home page of your application. It is stateful, meaning
+                    43     // that it has a State object (defined below) that contains fields that affect
+                    44     // how it looks.
+                    45 
+                    46     // This class is the configuration for the state. It holds the values (in this
+                    47     // case the title) provided by the parent (in this case the App widget) and
+                    48     // used by the build method of the State. Fields in a Widget subclass are
+                    49     // always marked "final".
+                    50 
+                    51     final String title;
+                    52 
+                    53     @override
+                    54     State<MyHomePage> createState() => _MyHomePageState();
+                    55   }
+                    56 
+                    57   class _MyHomePageState extends State<MyHomePage> {
+                    58     int _counter = 0;
+                    59 
+                    60     void _incrementCounter() {
+                    61       setState(() {
+                    62         // This call to setState tells the Flutter framework that something has
+                    63         // changed in this State, which causes it to rerun the build method below
+                    64         // so that the display can reflect the updated values. If we changed
+                    65         // _counter without calling setState(), then the build method would not be
+                    66         // called again, and so nothing would appear to happen.
+                    67         _counter++;
+                    68       });
+                    69     }
+                    70 
+                    71     @override
+                    72     Widget build(BuildContext context) {
+                    73       // This method is rerun every time setState is called, for instance as done
+                    74       // by the _incrementCounter method above.
+                    75       //
+                    76       // The Flutter framework has been optimized to make rerunning build methods
+                    77       // fast, so that you can just rebuild anything that needs updating rather
+                    78       // than having to individually change instances of widgets.
+                    79       return Scaffold(
+                    80         appBar: AppBar(
+                    81           // TRY THIS: Try changing the color here to a specific color (to
+                    82           // Colors.amber, perhaps?) and trigger a hot reload to see the AppBar
+                    83           // change color while the other colors stay the same.
+                    84           backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+                    85           // Here we take the value from the MyHomePage object that was created by
+                    86           // the App.build method, and use it to set our appbar title.
+                    87           title: Text(widget.title),
+                    88         ),
+                    89         body: Center(
+                    90           // Center is a layout widget. It takes a single child and positions it
+                    91           // in the middle of the parent.
+                    92           child: Column(
+                    93             // Column is also a layout widget. It takes a list of children and
+                    94             // arranges them vertically. By default, it sizes itself to fit its
+                    95             // children horizontally, and tries to be as tall as its parent.
+                    96             //
+                    97             // Column has various properties to control how it sizes itself and
+                    98             // how it positions its children. Here we use mainAxisAlignment to
+                    99             // center the children vertically; the main axis here is the vertical
+                   100             // axis because Columns are vertical (the cross axis would be
+                   101             // horizontal).
+                   102             //
+                   103             // TRY THIS: Invoke "debug painting" (choose the "Toggle Debug Paint"
+                   104             // action in the IDE, or press "p" in the console), to see the
+                   105             // wireframe for each widget.
+                   106             mainAxisAlignment: MainAxisAlignment.center,
+                   107             children: <Widget>[
+                   108               const Text(
+                   109                 'You have pushed the button this many times:',
+                   110               ),
+                   111               Text(
+                   112                 '$_counter',
+                   113                 style: Theme.of(context).textTheme.headlineMedium,
+                   114               ),
+                   115             ],
+                   116           ),
+                   117         ),
+                   118         floatingActionButton: FloatingActionButton(
+                   119           onPressed: _incrementCounter,
+                   120           tooltip: 'Increment',
+                   121           child: const Icon(Icons.add),
+                   122         ), // This trailing comma makes auto-formatting nicer for build methods.
+                   123       );
+                   124     }
+                   125   }
+
 
                 ┌ ------------------------------------------------------------------------------------------------------------------------------------ ┐
                 |                                                                                                                                      |
