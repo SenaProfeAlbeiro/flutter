@@ -15,7 +15,7 @@
 ||| --  08. List<Map<String, dynamic>> sitiosTuristicos = []                                                                                           |||
 ||| --  09. CircleAvatar(), NetworkImage(), onTap: () {}, showModalBottomSheet(),  List<Map<String, dynamic>> sitiosTuristicos = [Colors, foto]        |||
 ||| --  10. FloatingActionButton(), TextFormField(), TextEditingController()                                                                           |||
-||| --  11. .                                                                                                                                          |||
+||| --  11. Consultar API Externa. post, comments, albums y photos                                                                                     |||
 |||                                                                                                                                                    |||
 ||| --  AUTOR:  ALBEIRO RAMOS. SENA, 2025.                                                                                                             |||
 |||                                                                                                                                                    |||
@@ -1149,7 +1149,7 @@
 
 |||\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\|||
 |||----------------------------------------------------------------------------------------------------------------------------------------------------|||
-|||----- 10.  FloatingActionButton(), TextFormField(), TextEditingController() ------------------------------------------------------------------------|||
+|||-------------------------------------- 10.  FloatingActionButton(), TextFormField(), TextEditingController() ---------------------------------------|||
 |||----------------------------------------------------------------------------------------------------------------------------------------------------|||
 |||\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\|||
 
@@ -1435,6 +1435,7 @@
                    265       'foto_monumento': 'https://source.unsplash.com/featured/?Mount%20Everest'
                    266     }
                    267   ];
+                   
 
                 ┌ ------------------------------------------------------------------------------------------------------------------------------------ ┐
                 |                                                                                                                                      |
@@ -1450,8 +1451,334 @@
 
 
 
+|||\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\|||
+|||----------------------------------------------------------------------------------------------------------------------------------------------------|||
+|||-------------------------------------------- 11.  Consumir API Externa. post, comments, albums y photos --------------------------------------------|||
+|||----------------------------------------------------------------------------------------------------------------------------------------------------|||
+|||\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\|||
+
+|--------------------------------------------------------------------------------------------------------------------------------------------------------|
+|-- 11.01.  Crear el proyecto 'app11': ------------------------------------------------------------------------------------------------------------------|
+|--------------------------------------------------------------------------------------------------------------------------------------------------------|
+
+            01. Crear una carpeta de flutter para los proyectos, por ejemplo en 'C:\..\..\Desktop\flutter'.
+
+            02. Ir a 'view / command palette (Ctrl + shift + p) / Flutter: New Project / Application'.
+            
+            03. Nombrar el proyecto, ejemplo 'app11' / Enter.
 
 
+|--------------------------------------------------------------------------------------------------------------------------------------------------------|
+|-- 11.02.  Crear la siguiente estructura de carpetas y archivos: ---------------------------------------------------------------------------------------|
+|--------------------------------------------------------------------------------------------------------------------------------------------------------|
+
+                                                                                                                                        # C = Carpetas
+                                                                                                                                        # A = Archivos
+
+                app11/                                                      # C. .
+                └── lib/                                                    # C. .
+                    └── api/                                                # C. .
+                        ├── ConsultarAlbum.dart                             # A. .
+                        ├── ConsultarFotos.dart                             # A. .
+                        └── ConsultarNoticias.dart                          # A. .
 
 
+|--------------------------------------------------------------------------------------------------------------------------------------------------------|
+|-- 11.03.  Crear API's de consumo: ---------------------------------------------------------------------------------------------------------------------|
+|--------------------------------------------------------------------------------------------------------------------------------------------------------|
+            
+            01. Escribir en el archivo 'app11/lib/api/ConsultarAlbum.dart' el siguiente código:
 
+                    01   import 'dart:convert';
+                    02   import 'package:flutter/foundation.dart';
+                    03   import 'package:http/http.dart' as http;
+                    04   Future<List<Album>> ConsultarAlbum() async {
+                    05     var url = Uri.parse("https://jsonplaceholder.typicode.com/albums");
+                    06     final response = await http.get(url);
+                    07     return compute(pasaraListaAlbums, response.body);
+                    08   }
+                    09   List<Album> pasaraListaAlbums(String respuestaBody) {
+                    10     final pasar = json.decode(respuestaBody).cast<Map<String, dynamic>>();
+                    11     return pasar.map<Album>((json) => Album.fromJson(json)).toList();
+                    12   }
+                    13   class Album {
+                    14     final id;
+                    15     final title;
+                    16     Album({this.id, this.title});
+                    17     factory Album.fromJson(Map<String, dynamic> json) {
+                    18       return Album(
+                    19         id: json['id'],
+                    20         title: json['title'],
+                    21       );
+                    22     }
+                    23   }
+
+
+                ┌ ------------------------------------------------------------------------------------------------------------------------------------ ┐
+                |                                                                                                                                      |
+                  EXPLICACIÓN:   
+                    
+                    ⦿   XXXXXXXXXXXXXXXXXXXXXXXXXXXXX.
+
+                |--------------------------------------------------------------------------------------------------------------------------------------|
+
+                    A.   XXXXXXXXXXXXXXXXXXXXXXXXXXXXX.
+                |                                                                                                                                      |
+                └ ------------------------------------------------------------------------------------------------------------------------------------ ┘
+
+
+            02. Escribir en el archivo 'app11/lib/api/ConsultarFotos.dart' el siguiente código:
+
+                    01   import 'dart:convert';
+                    02   import 'package:flutter/foundation.dart';
+                    03   import 'package:http/http.dart' as http;
+                    04   Future<List<Fotos>> ConsultarFotos() async {
+                    05     var url = Uri.parse("https://jsonplaceholder.typicode.com/photos");
+                    06     final response = await http.get(url);
+                    07     return compute(pasaraListaFotos, response.body);
+                    08   }
+                    09   List<Fotos> pasaraListaFotos(String respuestaBody) {
+                    10     final pasar = json.decode(respuestaBody).cast<Map<String, dynamic>>();
+                    11     return pasar.map<Fotos>((json) => Fotos.fromJson(json)).toList();
+                    12   }
+                    13   class Fotos {
+                    14     final id;
+                    15     final title;
+                    16     final albumId;
+                    17     final thumbnailUrl;
+                    18     Fotos({this.id, this.title, this.albumId, this.thumbnailUrl});
+                    19     factory Fotos.fromJson(Map<String, dynamic> json) {
+                    20       return Fotos(
+                    21         id: json['id'],
+                    22         title: json['title'],
+                    23         albumId: json['albumId'],
+                    24         thumbnailUrl: json['thumbnailUrl'],
+                    25       );
+                    26     }
+                    27   }
+
+
+                ┌ ------------------------------------------------------------------------------------------------------------------------------------ ┐
+                |                                                                                                                                      |
+                  EXPLICACIÓN:   
+                    
+                    ⦿   XXXXXXXXXXXXXXXXXXXXXXXXXXXXX.
+
+                |--------------------------------------------------------------------------------------------------------------------------------------|
+
+                    A.   XXXXXXXXXXXXXXXXXXXXXXXXXXXXX.
+                |                                                                                                                                      |
+                └ ------------------------------------------------------------------------------------------------------------------------------------ ┘
+
+
+            03. Escribir en el archivo 'app11/lib/api/ConsultarNoticias.dart' el siguiente código:
+
+                    01   import 'dart:convert';
+                    02   import 'package:flutter/foundation.dart';
+                    03   import 'package:http/http.dart' as http;
+                    04   Future<List<Noticias>> ConsultarNoticias() async {
+                    05     var url = Uri.parse("https://jsonplaceholder.typicode.com/posts");
+                    06     final response = await http.get(url);
+                    07     return compute(pasaraListarNoticias, response.body);
+                    08   }
+                    09   List<Noticias> pasaraListarNoticias(String respuestaBody) {
+                    10     final pasar = json.decode(respuestaBody).cast<Map<String, dynamic>>();
+                    11     return pasar.map<Noticias>((json) => Noticias.fromJson(json)).toList();
+                    12   }
+                    13   class Noticias {
+                    14     final userId;
+                    15     final id;
+                    16     final title;
+                    17     final body;
+                    18     Noticias({this.userId, this.id, this.title, this.body});
+                    19     factory Noticias.fromJson(Map<String, dynamic> json) {
+                    20       return Noticias(
+                    21         userId: json['userId'],
+                    22         id: json['id'],
+                    23         title: json['title'],
+                    24         body: json['body'],
+                    25       );
+                    26     }
+                    27   }
+
+                ┌ ------------------------------------------------------------------------------------------------------------------------------------ ┐
+                |                                                                                                                                      |
+                  EXPLICACIÓN:   
+                    
+                    ⦿   XXXXXXXXXXXXXXXXXXXXXXXXXXXXX.
+
+                |--------------------------------------------------------------------------------------------------------------------------------------|
+
+                    A.   XXXXXXXXXXXXXXXXXXXXXXXXXXXXX.
+                |                                                                                                                                      |
+                └ ------------------------------------------------------------------------------------------------------------------------------------ ┘
+
+
+|--------------------------------------------------------------------------------------------------------------------------------------------------------|
+|-- 11.04.  Modificar el archivo 'app11/lib/main.dart':  ------------------------------------------------------------------------------------------------|
+|--------------------------------------------------------------------------------------------------------------------------------------------------------|
+
+                    01   import 'package:app11/api/ConsultarAlbum.dart';
+                    02   import 'package:app11/api/ConsultarFotos.dart';
+                    03   import 'package:app11/api/ConsultarNoticias.dart';
+                    04   import 'package:flutter/material.dart';
+                    05   void main(List<String> args) {
+                    06     runApp(const Principal());
+                    07   }
+                    08   class Principal extends StatelessWidget {
+                    09     const Principal({super.key});
+                    10     @override
+                    11     Widget build(BuildContext context) {
+                    12       return const MaterialApp(
+                    13         debugShowCheckedModeBanner: false,
+                    14         title: "SENA | CEET",
+                    15         home: HomePrincipal(),
+                    16       );
+                    17     }
+                    18   }
+                    19   class HomePrincipal extends StatefulWidget {
+                    20     const HomePrincipal({super.key});
+                    21     @override
+                    22     State<HomePrincipal> createState() => _HomePrincipalState();
+                    23   }
+                    24   class _HomePrincipalState extends State<HomePrincipal> {
+                    25     @override
+                    26     Widget build(BuildContext context) {
+                    27       return Scaffold(
+                    28         appBar: AppBar(
+                    29           title: const Text("Ejemplo app01 - APIS"),
+                    30           backgroundColor: Colors.green,
+                    31           foregroundColor: Colors.white,
+                    32         ),
+                    33         body: Padding(
+                    34           padding: const EdgeInsets.all(8.0),
+                    35           child: Column(
+                    36             children: [
+                    37               Card(
+                    38                 child: ListTile(
+                    39                   leading: Icon(Icons.newspaper),
+                    40                   title: Text("Noticias"),
+                    41                   trailing: Icon(Icons.arrow_circle_right_outlined),
+                    42                   onTap: () {
+                    43                     ConsultarNoticias().then((resp) {
+                    44                       showModalBottomSheet(
+                    45                         isScrollControlled: true,
+                    46                         context: context,
+                    47                         builder: (context) {
+                    48                           return Scaffold(
+                    49                             appBar: AppBar(
+                    50                               title: Text("Noticias"),
+                    51                               foregroundColor: Colors.white,
+                    52                               backgroundColor: Colors.green,
+                    53                             ),
+                    54                             body: ListView.builder(
+                    55                               itemCount: resp.length,
+                    56                               itemBuilder: (BuildContext context, int index) {
+                    57                                 return Card(
+                    58                                     child: ListTile(
+                    59                                         title: Text(resp[index].title),
+                    60                                         subtitle: Text(resp[index].body)));
+                    61                               },
+                    62                             ),
+                    63                           );
+                    64                         },
+                    65                       );
+                    66                     });
+                    67                   },
+                    68                 ),
+                    69               ),
+                    70               Card(
+                    71                 child: ListTile(
+                    72                   leading: Icon(Icons.comment),
+                    73                   title: Text("Comentarios"),
+                    74                   trailing: Icon(Icons.arrow_circle_right_outlined),
+                    75                   onTap: () {},
+                    76                 ),
+                    77               ),
+                    78               Card(
+                    79                 child: ListTile(
+                    80                   leading: Icon(Icons.album),
+                    81                   title: Text("Albums"),
+                    82                   trailing: Icon(Icons.arrow_circle_right_outlined),
+                    83                   onTap: () {
+                    84                     ConsultarAlbum().then((resp) {
+                    85                       showModalBottomSheet(
+                    86                         isScrollControlled: true,
+                    87                         context: context,
+                    88                         builder: (context) {
+                    89                           return Scaffold(
+                    90                             appBar: AppBar(
+                    91                               title: Text("Album"),
+                    92                               foregroundColor: Colors.white,
+                    93                               backgroundColor: Colors.green,
+                    94                             ),
+                    95                             body: ListView.builder(
+                    96                               itemCount: resp.length,
+                    97                               itemBuilder: (BuildContext context, int index) {
+                    98                                 return Card(
+                    99                                     child:
+                   100                                         ListTile(title: Text(resp[index].title)));
+                   101                               },
+                   102                             ),
+                   103                           );
+                   104                         },
+                   105                       );
+                   106                     });
+                   107                   },
+                   108                 ),
+                   109               ),
+                   110               Card(
+                   111                 child: ListTile(
+                   112                   leading: Icon(Icons.photo),
+                   113                   title: Text("Fotos"),
+                   114                   trailing: Icon(Icons.arrow_circle_right_outlined),
+                   115                   onTap: () {
+                   116                     ConsultarFotos().then((resp) {
+                   117                       showModalBottomSheet(
+                   118                         isScrollControlled: true,
+                   119                         context: context,
+                   120                         builder: (context) {
+                   121                           return Scaffold(
+                   122                             appBar: AppBar(
+                   123                               title: Text("Fotos"),
+                   124                               foregroundColor: Colors.white,
+                   125                               backgroundColor: Colors.green,
+                   126                             ),
+                   127                             body: ListView.builder(
+                   128                               itemCount: resp.length,
+                   129                               itemBuilder: (BuildContext context, int index) {
+                   130                                 return Card(
+                   131                                     child: ListTile(
+                   132                                         leading: CircleAvatar(
+                   133                                           backgroundImage: NetworkImage(
+                   134                                               resp[index].thumbnailUrl),
+                   135                                         ),
+                   136                                         title: Text(resp[index].title)));
+                   137                               },
+                   138                             ),
+                   139                           );
+                   140                         },
+                   141                       );
+                   142                     });
+                   143                   },
+                   144                 ),
+                   145               ),
+                   146             ],
+                   147           ),
+                   148         ),
+                   149       );
+                   150     }
+                   151   }
+
+
+                ┌ ------------------------------------------------------------------------------------------------------------------------------------ ┐
+                |                                                                                                                                      |
+                  EXPLICACIÓN:   
+                    
+                    ⦿   XXXXXXXXXXXXXXXXXXXXXXXXXXXXX.
+
+                |--------------------------------------------------------------------------------------------------------------------------------------|
+
+                    A.   XXXXXXXXXXXXXXXXXXXXXXXXXXXXX.
+                |                                                                                                                                      |
+                └ ------------------------------------------------------------------------------------------------------------------------------------ ┘
