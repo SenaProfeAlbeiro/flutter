@@ -1612,7 +1612,13 @@
 |-- 11.03.  Crear API's de consumo: ---------------------------------------------------------------------------------------------------------------------|
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
             
-            01. Escribir en el archivo 'app11/lib/api/ConsultarAlbum.dart' el siguiente código:
+            01. Abrir una 'Terminal' en Visual Studio Code: 'Terminal / New Terminal' ó 'Ctrl + Shift + ñ'.
+            
+            02. Ejecutar el siguiente comando:
+
+                    PS C:\..\..\flutter\app01> flutter pub add http
+
+            03. Escribir en el archivo 'app11/lib/api/ConsultarAlbum.dart' el siguiente código:
 
                     01   import 'dart:convert';
                     02   import 'package:flutter/foundation.dart';
@@ -1652,7 +1658,7 @@
                 └ ------------------------------------------------------------------------------------------------------------------------------------ ┘
 
 
-            02. Escribir en el archivo 'app11/lib/api/ConsultarFotos.dart' el siguiente código:
+            04. Escribir en el archivo 'app11/lib/api/ConsultarFotos.dart' el siguiente código:
 
                     01   import 'dart:convert';
                     02   import 'package:flutter/foundation.dart';
@@ -1696,7 +1702,7 @@
                 └ ------------------------------------------------------------------------------------------------------------------------------------ ┘
 
 
-            03. Escribir en el archivo 'app11/lib/api/ConsultarNoticias.dart' el siguiente código:
+            05. Escribir en el archivo 'app11/lib/api/ConsultarNoticias.dart' el siguiente código:
 
                     01   import 'dart:convert';
                     02   import 'package:flutter/foundation.dart';
