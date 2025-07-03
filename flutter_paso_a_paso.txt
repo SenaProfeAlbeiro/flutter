@@ -1616,7 +1616,7 @@
             
             02. Ejecutar el siguiente comando:
 
-                    PS C:\..\..\flutter\app01> flutter pub add http
+                    PS C:\..\..\flutter\app11> flutter pub add http
 
             03. Escribir en el archivo 'app11/lib/api/ConsultarAlbum.dart' el siguiente código:
 
